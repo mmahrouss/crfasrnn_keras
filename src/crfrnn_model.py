@@ -110,7 +110,7 @@ def get_crfrnn_model_def():
                          theta_gamma=3.,
                          num_iterations=10,
                          name='crfrnn')([upscore, img_input])
-    output = tf.reshape(output,(-1,23))
+    output = tf.reshape(output,(250000,21))
     
     # Build the model
     model = Model(img_input, output, name='crfrnn_net')
