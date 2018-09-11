@@ -101,7 +101,7 @@ def get_crfrnn_model_def():
     # Final up-sampling and cropping
     upsample = Conv2DTranspose(21, (16, 16), strides=8, name='upsample', use_bias=False, trainable=True)(score_final)
     upscore = Cropping2D(((31, 37), (31, 37)))(upsample)
-
+    print(tf.shape(upscore))
     output = CrfRnnLayer(image_dims=(height, weight),
                          num_classes=21,
                          theta_alpha=160.,
