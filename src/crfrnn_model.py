@@ -77,7 +77,7 @@ def get_crfrnn_model_def():
     x = MaxPooling2D((2, 2), strides=(2, 2), name='pool5', padding='same', trainable=False)(x)
 
     # Fully-connected layers converted to convolution layers
-    x = Conv2D(4096, (7, 7), activation='relu', padding='valid', name='fc6', trainable=True)(x)
+    x = Conv2D(4096, (7, 7), activation='relu', padding='valid', name='fc6', trainable=False)(x)
     x = Dropout(0.5)(x)
     x = Conv2D(4096, (1, 1), activation='relu', padding='valid', name='fc7', trainable=True)(x)
     x = Dropout(0.5)(x)
@@ -110,7 +110,7 @@ def get_crfrnn_model_def():
                          theta_gamma=3.,
                          num_iterations=10,
                          name='crfrnn')([upscore, img_input])
-    output = keras.layers.Reshape((250000,21))(output)
+    output = keras.layers.Reshape((250000,21),name='Reshape')(output)
     
     # Build the model
     model = Model(img_input, output, name='crfrnn_net')
