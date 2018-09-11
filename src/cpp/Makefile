@@ -18,7 +18,7 @@ TF_INC := $(shell python -c 'import tensorflow as tf; print(tf.sysconfig.get_inc
 TF_LIB := $(shell python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')
 
 # Is the Tensorflow version >= 1.4?
-TF_VERSION_GTE_1_4 := $(shell expr `python -c 'import tensorflow as tf; print(tf.__version__)' | cut -f1,2 -d.` \>= 1.4)
+TF_VERSION_GTE_1_4 := 1
 
 # Flags required for all cases
 CFLAGS := -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0 -shared -fPIC -I$(TF_INC) -O2 
