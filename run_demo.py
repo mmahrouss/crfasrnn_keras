@@ -40,6 +40,7 @@ def main():
 
     img_data, img_h, img_w = util.get_preprocessed_image(input_file)
     probs = model.predict(img_data, verbose=False)[0, :, :, :]
+    print(probs.shape)
     segmentation = util.get_label_image(probs, img_h, img_w)
     segmentation.save(output_file)
 
